@@ -19,6 +19,7 @@ Sumber data:
 
 
 Tangkapan layar komponen:
-![Gambar 1](foto_hasil/1.png)
-![Gambar 2](foto_hasil/2.png)
-|
+<img src="foto_hasil/1.png" alt="Gambar 1" width="200"/>
+<img src="foto_hasil/2.png" alt="Gambar 2" width="200"/>
+<img src="foto_hasil/3.png" alt="Gambar 3" width="200"/>
+<img src="foto_hasil/4.png" alt="Gambar 4" width="200"/>
