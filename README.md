@@ -13,6 +13,7 @@ Sumber data:
 1. https://tanahair.indonesia.go.id/
 2. https://blorakab.bps.go.id/
 3. https://www.blorakab.go.id/
+4. https://www.traveloka.com/
 
 
 Tangkapan layar komponen:   
