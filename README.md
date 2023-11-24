@@ -16,7 +16,18 @@ Sumber data:
 
 
 Tangkapan layar komponen:   
-<img src="foto_hasil/1.png" alt="Gambar 1" width="400"/>   
-<img src="foto_hasil/2.png" alt="Gambar 2" width="400"/>   
-<img src="foto_hasil/3.png" alt="Gambar 3" width="400"/>  
-<img src="foto_hasil/4.png" alt="Gambar 4" width="400"/>  
+<div align="center">
+  <img src="foto_hasil/1.png" alt="Gambar 1" width="400"/>
+</div>
+
+<div align="center">
+  <img src="foto_hasil/2.png" alt="Gambar 2" width="400"/>
+</div>
+
+<div align="center">
+  <img src="foto_hasil/3.png" alt="Gambar 3" width="400"/>
+</div>
+
+<div align="center">
+  <img src="foto_hasil/4.png" alt="Gambar 4" width="400"/>
+</div>
