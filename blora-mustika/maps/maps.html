@@ -11,7 +11,7 @@
     <meta name="description" content="leaflet basic">
 
     <!-- Judul pada tab browser -->
-    <title>LeafletJS - Covid-19 Ma1p</title>
+    <title>Peta Tampilan Wilayah Blora</title>
 
     <!--leafleat Javascript Library-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -63,7 +63,7 @@
 </head>
 
 <body>
-    
+
     <div id="map"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -188,14 +188,39 @@
             map.fitBounds(wfsgeoserver1.getBounds());
         });
 
+        var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Blora/wms?', {
+            layers: 'Blora:blora',
+            transparent: 'true',
+            zIndex: 10,
+            format: 'image/png',
+            transparent: true,
+            version: '1.3.0',
+            service: 'WMS',
+            request: 'GetMap',
+            opacity : 0.5,
+            crs: L.CRS.EPSG4326 // Pastikan koordinat sesuai dengan GeoServer
+        }).addTo(map);
+
+        var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Blora/wms?', {
+            layers: 'Blora:JALAN_LN_25K',
+            transparent: 'true',
+            zIndex: 11,
+            format: 'image/png',
+            transparent: true,
+            version: '1.3.0',
+            service: 'WMS',
+            request: 'GetMap',
+            opacity : 0.5,
+            crs: L.CRS.EPSG4326 // Pastikan koordinat sesuai dengan GeoServer
+        }).addTo(map);
 
 
         /* Image Watermark */
         L.Control.Watermark = L.Control.extend({
             onAdd: function (map) {
                 var img = L.DomUtil.create("img");
-                img.src = "assets/img/logo/logo_trischies.png";
-                img.style.width = "100px";
+                img.src = "assets/img/logo/svugm.png";
+                img.style.width = "200px";
                 return img;
             },
         });
@@ -210,7 +235,7 @@
         L.Control.Legend = L.Control.extend({
             onAdd: function (map) {
                 var img = L.DomUtil.create('img');
-                img.src = 'assets/img/legend/legenda.png';
+                img.src = 'assets/img/legend/Legend.png';
                 img.style.width = '200px';
                 return img;
             }

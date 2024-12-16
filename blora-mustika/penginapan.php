@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="assets/plugins/leaflet-routing/leaflet-routing-machine.css" />
 
     <!-- Judul pada tab browser -->
-    <title>Rumah Sakit</title>
+    <title>Lokasi Penginapan Blora</title>
 
     <!-- Tab browser icon -->
     <link rel="icon" type="image/x-icon" href="http://luk.staff.ugm.ac.id/logo/UGM/Resmi/Warna.gif">
@@ -137,7 +137,7 @@
 
     <script>
         /* Initial Map */
-        var map = L.map('map').setView([-7.794760241050732, 110.36718249219427], 13); //lat, long, zoom
+        var map = L.map('map').setView([-6.968819071360654, 111.42014078623389], 13); //lat, long, zoom
         /* Tile Basemap */
         var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="DIVSIG UGM" target="_blank">DIVSIG UGM</a>' //menambahkan nama//
@@ -198,7 +198,7 @@
         die("Connection failed: " . $conn->connect_error);
         }
         
-        $sql = "SELECT * FROM hotel";
+        $sql = "SELECT * FROM lokasi";
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
@@ -246,12 +246,35 @@
         map.fitBounds(wfsgeoserver1.getBounds());
       });
 
-      
+      var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Blora/wms?', {
+            layers: 'Blora:blora',
+            transparent: 'true',
+            zIndex: 10,
+            format: 'image/png',
+            transparent: true,
+            version: '1.3.0',
+            service: 'WMS',
+            request: 'GetMap',
+            opacity : 0.5
+        }).addTo(map);
+
+        var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Blora/wms?', {
+            layers: 'Blora:JALAN_LN_25K',
+            transparent: 'true',
+            zIndex: 11,
+            format: 'image/png',
+            transparent: true,
+            version: '1.3.0',
+            service: 'WMS',
+            request: 'GetMap',
+            opacity : 0.5
+        }).addTo(map);
+
     /* Image Watermark */
     L.Control.Watermark = L.Control.extend({
     onAdd: function(map) {
     var img = L.DomUtil.create('img');
-    img.src = 'img/logo_trischies.png';
+    img.src = 'img/svugm.png';
     img.style.width = '130px';
     return img;
     }
@@ -263,15 +286,15 @@
     L.control.watermark({ position: 'bottomleft' }).addTo(map);
 
 
-    /* Image Legend */
-    L.Control.Legend = L.Control.extend({
-    onAdd: function(map) {
-    var img = L.DomUtil.create('img');
-    img.src = 'assets/img/legend/legenda.png';
-    img.style.width = '150px';
-    return img;
-    }
-    });
+/* Image Legend */
+        L.Control.Legend = L.Control.extend({
+            onAdd: function (map) {
+                var img = L.DomUtil.create('img');
+                img.src = 'assets/img/legend/Legend.png';
+                img.style.width = '200px';
+                return img;
+            }
+        });
 
     L.control.Legend = function(opts) {
     return new L.Control.Legend(opts);
